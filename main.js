@@ -88,40 +88,18 @@ function searchproduct(name) {
 
 function sortBy(condition) {
 
-    if ( condition === "ID") {
-       return products.sort((a, b) => {
-        if (b.id > a.id) {
-          return -1;
+
+    return products.sort((a, b) => {
+        if (b[condition] > a[condition]) {
+        return -1;
         }
-        if (b.id < a.id) {
-          return 1;
+        if (b[condition] < a[condition]) {
+        return 1;
         }
         // a es igual a b
-        return 0;
-      }) 
-    } else if (condition === "NOMBRE") {
-        return products.sort((a, b) => {
-        if (b.name > a.name) {
-          return -1;
-        }
-        if (b.name < a.name) {
-          return 1;
-        }
-        
-        return 0;
-      })
-    } else {
-        return products.sort((a, b) => {
-      if (b.price > a.price) {
-        return -1;
-      }
-      if (b.price < a.price) {
-        return 1;
-      }
-      
       return 0;
-    })
-    }
+    }) 
+    
 }
 
 // Funcion para agregar al carrito, le pasamos por parametro el ID que queremos buscar y buscamos un producto con el mismo ID, lo guardamos en productoEncontrado, luego se usa la funcion push para agregarlo a nuestro vector cart, si no se encuentra muestra un mensaje
@@ -178,7 +156,7 @@ function executeOpcion(option) {
 
         case 2:
 
-            const condition = prompt("Ingrese como desea ordenar la lista: (ID - NOMBRE - PRECIO)")
+            const condition = prompt("Ingrese como desea ordenar la lista: (id - name - price)")
 
             const organizedProducts = sortBy(condition);
 
